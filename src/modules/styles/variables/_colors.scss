@@ -1,0 +1,57 @@
+// colors
+:root {
+  --grey-1: #333333;
+  --grey-2: #4f4f4f; // Emperor
+  --grey-3: #828282; // Grey
+  --grey-4: #bdbdbd; // Silver
+  --pale-sky: #6c757d; // opacity 0.2
+  --trout: #495057; // --Forms-Input-text: #495057;
+  --outer-space: #343a40; // opacity 0.8
+  --shark: #212529;
+  --warm-light-grey: #e9ecef;
+
+  --black: #000000;
+  --light-grey: #e0e0e0;
+  --ghost: #ced4da;
+
+  --white: #ffffff;
+  --yellow: #ffc107;
+  --orange: #f2994a;
+  --red: #dc3545;
+  --green: #28a745;
+  --turquoise: #17a2b8;
+  --strange-blue: #007bff;
+  --sky-blue: #ddedff;
+  --alice-blue: #f2f8ff;
+}
+
+:root,
+[data-theme="default"] {
+  --col-primary: var(--grey-1);
+  --col-secondary: var(--grey-3);
+  --col-primary-light: var(--grey-4);
+  --col-primary-dark: var(--grey-2);
+
+  --col-text-primary: var(--trout);
+  --col-text-secondary: var(--shark);
+  --col-subtext-primary: var(--outer-space);
+  --col-subtext-secondary: var(--pale-sky);
+  --col-contrast-text: var(--white);
+
+  --col-error: var(--red);
+  --col-attention: var(--orange);
+  --col-warning: var(--yellow);
+  --col-success: var(--green);
+  --col-info: var(--turquoise);
+  --col-additional: var(--strange-blue);
+  --col-secondary-btn: var(--warm-light-grey);
+  --col-box-shadow: var(--trout);
+
+  --checkbox-border: var(--black);
+  --col-hr: var(--light-grey);
+  --col-border: var(--ghost);
+
+  --col-bg-primary: var(--alice-blue);
+  --col-bg-secondary: var(--white);
+  --col-bg-attention: var(--sky-blue);
+}

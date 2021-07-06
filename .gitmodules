@@ -1,0 +1,3 @@
+[submodule "src/modules"]
+	path = src/modules
+	url = git@bitbucket.org:t_tkachenko/cureline-crm-modules.git

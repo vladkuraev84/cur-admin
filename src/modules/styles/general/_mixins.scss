@@ -1,0 +1,121 @@
+// Capitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+@function capitalize($string) {
+    @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+// Alias
+@function str-ucfirst($string) {
+    @return capitalize($string);
+}
+
+// Uncapitalize string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function uncapitalize($string) {
+    @return to-lower-case(str-slice($string, 1, 1)) + str-slice($string, 2);
+}
+
+// Alias
+@function str-lcfirst($string) {
+    @return uncapitalize($string);
+}
+
+// Capitalize each word in string
+// --------------------------------------------------------------------------------
+// @param [string] $string
+// --------------------------------------------------------------------------------
+// @return [string]
+
+@function str-ucwords($string) {
+    $progress: $string;
+    $result: "";
+
+    $running: true;
+
+    @while $running {
+        $index: str-index($progress, " ");
+        @if $index {
+            $result: $result + capitalize(str-slice($progress, 1, $index));
+            $progress: str-slice($progress, ($index + 1));
+        } @else {
+            $running: false;
+        }
+    }
+
+    @return capitalize($result) + capitalize($progress);
+}
+
+// Return whether `$value` is contained in `$list`
+// --------------------------------------------------------------------------------
+// @param [list] $list
+// @param [$value] $value
+// --------------------------------------------------------------------------------
+// @return [boolean]
+
+@function contain($list, $value) {
+    @return not not index($list, $value);
+}
+
+// Remove white space from string
+@function str-remove-whitespace($str) {
+    @while (str-index($str, " ") != null) {
+        $index: str-index($str, " ");
+        $str: "#{str-slice($str, 0, $index - 1)}#{str-slice($str, $index + 1)}";
+    }
+    @return $str;
+}
+
+@mixin font-face($font, $family, $weight, $style) {
+    $filepath: "./modules/fonts/" + $font + "/" + $family + "/" +
+    // $filepath: "../fonts/" + $font + "/" + $family + "/" +
+    $font + "-" + $family;
+    @font-face {
+        font-family: "#{$font}-#{$family}";
+        src: local("#{$font} #{$family}"),
+            url($filepath + ".woff") format("woff"), url($filepath + ".woff2") format("woff2"),
+            url($filepath + ".ttf") format("truetype");
+        font-weight: $weight;
+        font-style: $style;
+        font-stretch: normal;
+        font-display: swap;
+    }
+}
+
+// Style placeholder
+@mixin placeholder {
+    &.placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+}
+
+@function getMainColors($color, $colorText) {
+    $colors: (
+        text: $colorText,
+        base: $color,
+        backgroundColor: mix($color, #ffffff, 16%),
+        backgroundHover: mix($color, #ffffff, 8%),
+        hover: lighten($color, 5),
+        focused: darken($color, 5),
+    );
+
+    @return $colors;
+}
