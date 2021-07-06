@@ -33,7 +33,6 @@
           v-model="description"
         >
         </textarea>
-        <!-- {{ formattedDescription.split("\n") }} -->
       </div>
     </div>
 
